@@ -1,6 +1,6 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+//import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
@@ -18,7 +18,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -29,10 +29,10 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     jvm("desktop")
-    
-    @OptIn(ExperimentalWasmDsl::class)
+
+    //@OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         moduleName = "composeApp"
         browser {
@@ -51,10 +51,23 @@ kotlin {
         }
         binaries.executable()
     }
-    
+//    js(IR) {
+//        browser()
+//        binaries.executable()
+//    }
+
+//    js(IR) {  // IR (Intermediate Representation) - современный компилятор Kotlin/JS
+//        browser {  // Запуск в браузере
+//            commonWebpackConfig {
+//                cssSupport.enabled = true  // Поддержка CSS
+//            }
+//        }
+//        binaries.executable()  // Генерация исполняемого JS
+//    }
+
     sourceSets {
         val desktopMain by getting
-        
+
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
@@ -62,7 +75,7 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
-            implementation(compose.material)
+            implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
@@ -82,6 +95,18 @@ kotlin {
             //api(libs.ktor.serialization.gson)
 
             implementation(compose.materialIconsExtended)
+
+            //Precompose
+            implementation(libs.precompose)
+            implementation(libs.precompose.viewmodel)
+            implementation(libs.precompose.koin)
+
+            implementation(libs.runtime) // или актуальная версия
+
+            implementation(libs.koin.core)
+            implementation(libs.insert.koin.koin.compose)
+            implementation(libs.koin.compose.wasm.js)
+
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -118,6 +143,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.lifecycle.livedata.core.ktx)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.material3.android)
     debugImplementation(compose.uiTooling)
 }
 

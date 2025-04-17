@@ -1,11 +1,12 @@
 [versions]
 androidx-lifecycle = "2.8.4"
-compose-multiplatform = "1.7.0"
+compose-multiplatform = "1.6.11"
 junit = "4.13.2"
-kotlin = "2.1.0"
+koinComposeWasmJs = "4.1.0-Beta7"
+kotlin = "2.0.10"
 kotlinx-coroutines = "1.10.1"
 
-agp = "8.8.1"
+agp = "8.7.3"
 
 ktor = "3.0.3"
 ktorClientCio = "3.0.2"
@@ -14,6 +15,12 @@ ktorClientSerialization = "3.0.1"
 ktorSerializationGson = "3.0.2"
 ktorSerializationGsonVersion = "3.0.1"
 ktorSerializationKotlinxJson = "3.0.3"
+
+koin = "4.0.1"
+precompose = "1.7.0-alpha01"
+
+
+
 kotlinx-datetime = "0.6.2"
 
 filekit = "0.10.0-beta01"
@@ -21,15 +28,27 @@ activityCompose = "1.9.3"
 android-compileSdk = "35"
 android-minSdk = "24"
 android-targetSdk = "35"
+lifecycleLivedataCoreKtx = "2.8.7"
+foundationLayoutAndroid = "1.7.8"
+material3Android = "1.3.2"
+runtime = "1.7.3"
 
 [libraries]
+koin-compose-wasm-js = { module = "io.insert-koin:koin-compose-wasm-js", version.ref = "koinComposeWasmJs" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 kotlinx-coroutines-swing = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+precompose-koin = { module = "moe.tlaster:precompose-koin", version.ref = "precompose" }
+insert-koin-koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 
+precompose = { module = "moe.tlaster:precompose", version.ref = "precompose" }
+precompose-viewmodel = { module = "moe.tlaster:precompose-viewmodel", version.ref = "precompose" }
+
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 filekit-coil = { module = "io.github.vinceglb:filekit-coil", version.ref = "filekit" }
 filekit-core = { module = "io.github.vinceglb:filekit-core", version.ref = "filekit" }
 filekit-dialogs = { module = "io.github.vinceglb:filekit-dialogs", version.ref = "filekit" }
@@ -48,11 +67,14 @@ ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx
 ktor-client-js = { module = "io.ktor:ktor-client-js", version.ref = "ktorClientJs" }
 ktor-serialization-gson = { module = "io.ktor:ktor-serialization-gson", version.ref = "ktorSerializationGsonVersion" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-lifecycle-livedata-core-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-core-ktx", version.ref = "lifecycleLivedataCoreKtx" }
+androidx-foundation-layout-android = { group = "androidx.compose.foundation", name = "foundation-layout-android", version.ref = "foundationLayoutAndroid" }
+androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
+runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "runtime" }
 [plugins]
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }

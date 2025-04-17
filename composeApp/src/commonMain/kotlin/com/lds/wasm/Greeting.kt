@@ -33,21 +33,19 @@ class Greeting {
                     MultiPartFormDataContent(
                         formData {
                             append("username", "username" ?: "")
-                            appendInput(
-                                key = "files", // Ключ массива файлов
-                                headers = Headers.build {
-                                    append(
-                                        HttpHeaders.ContentDisposition,
-                                        "filename=\"$fileName\""
-                                    )
-                                }
-                                //, size = inputStream.available().toLong() // Размер файла в Long
-                                , size = fileSize
-                            ) {
-                                ....????
-                            }
-
-
+//                            appendInput(
+//                                key = "files", // Ключ массива файлов
+//                                headers = Headers.build {
+//                                    append(
+//                                        HttpHeaders.ContentDisposition,
+//                                        "filename=\"$fileName\""
+//                                    )
+//                                }
+//                                //, size = inputStream.available().toLong() // Размер файла в Long
+//                                , size = fileSize
+//                            ) {
+//                                ....????
+//                            }
                         }
                     )
                 )
